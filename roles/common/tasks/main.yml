@@ -1,0 +1,21 @@
+- name: add a new user      #Linuxユーザの作成
+  user: name=ansible 
+        state=present
+
+- name: mkdir .ssh          #.sshフォルダの作成
+  file: dest=/home/ansible/.ssh/ 
+        state=directory 
+        owner=ansible 
+        group=ansible 
+        mode=700
+
+- name: add authorized keys #.ssh以下にauthorized_keysファイルの作成
+  file: dest=/home/ansible/.ssh/authorized_keys 
+        state=touch 
+        owner=ansible
+        group=ansible
+        mode=600
+
+- name: copy publickey     #公開鍵を貼付け
+  copy: src=~/.ssh/authorized_keys 
+        dest=/home/ansible/.ssh/authorized_keys

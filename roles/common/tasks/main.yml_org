@@ -1,0 +1,4 @@
+- name: common process
+  service: name=httpd
+               state=started
+               enabled=yes
