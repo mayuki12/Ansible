@@ -1,14 +1,5 @@
-- name: install httpd
-  yum: name=httpd 
-        state=latest
-
-- name: write the apache config file
+- name: put the key file
   template:
-    src:  /etc/ansible/roles/webserv/templates/httpd.conf
-    dest: /etc/httpd.conf
+    src:  /etc/ansible/roles/landing/files/key
+    dest: ./keyfile
   
-- name: start service httpd
-  service: name=httpd 
-           state=started 
-           enabled=yes
-
