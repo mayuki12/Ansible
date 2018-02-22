@@ -47,6 +47,8 @@ ansible-playbook -i hosts test.yml --ask-pass
 -i : hostsファイルの指定
 -u : ログインユーザの指定
 --private-key ： 秘密鍵の指定
+--ask-pass  ：　ログイン時のパスワード
+--ask-become-pass : sudo時のパスワード
 ```
 
 ### 共通実行の例
