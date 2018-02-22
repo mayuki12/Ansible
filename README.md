@@ -118,3 +118,11 @@ Please add this host's fingerprint to your known_hosts file to manage this host.
 ssh_args = -C -o ControlMaster=auto -o ControlPersist=60s -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null
 ```
 
+### 設定ファイル
+設定ファイルの格納先  
+`/etc/ansible/ansible.cfg`  
+よく使いそうな設定  
+```
+log_path = /var/log/ansible.log
+private_key_file = /path/to/file
+```
