@@ -17,8 +17,7 @@ yumでインストールできる
 192.168.11.11
 ```
 
-ymlファイルを作成する  
-#httpdをインストールする  
+ymlファイルを作成する(httpdをインストールする)  
 ` /etc/ansible/test.yml`
 ```
 - hosts: webservers
@@ -72,6 +71,16 @@ ansibleの実行ユーザを作成するplaybook
 
 webservの設定を追加するplaybook  
 `~/roles/webserv/tasks/main.yml`  
+
+### 変数の使い方
+下記に変数ファイルを作成する  
+`~/vars/test.yml`  
+```
+<変数名>: 値
+username: user-test01
+```
+変数を参照する  
+`"{{username}}"`  
 
 ### エラーの例
 一度も該当ホストにssh-loginしていない場合に発生する
