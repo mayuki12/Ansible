@@ -61,6 +61,8 @@ format.yml
 
 - hosts: webservers
   remote_user: root
+  vars_files:
+  - ./vars/webserv.yml
   roles:
     - webserv
 ```
