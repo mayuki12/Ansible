@@ -18,7 +18,7 @@ yumでインストールできる
 ```
 
 ymlファイルを作成する  
-#httpdをインストールする  
+#httpdをインストールする  
 ` /etc/ansible/test.yml`
 ```
 - hosts: webservers
@@ -65,43 +65,11 @@ format.yml
     - webserv
 ```
 
-~/roles/common/tasks/main.yml
-```
-- name: add a new user      #ユーザ作成
-  user: name=ansible
-        state=present
+ansibleの実行ユーザを作成するplaybook  
+`~/roles/common/tasks/main.yml`  
 
-- name: mkdir .ssh          #ディレクトリ作成
-  file: dest=/home/ansible/.ssh/
-        state=directory
-        owner=ansible
-        group=ansible
-        mode=700
-
-- name: add authorized keys #認証鍵のコピー
-  file: dest=<公開鍵のキー>
-        state=touch
-        owner=ansible
-        group=ansible
-        mode=600
-```
-
-~/roles/webserv/tasks/main.yml
-```
-- name: install httpd
-  yum: name=httpd
-        state=latest
-
-- name: write the apache config file
-  template:
-    src:  /etc/ansible/roles/webserv/templates/httpd.conf
-    dest: /etc/httpd.conf
-
-- name: start service httpd
-  service: name=httpd
-           state=started
-           enabled=yes
-```
+webservの設定を追加するplaybook  
+`~/roles/webserv/tasks/main.yml`  
 
 ### エラーの例
 一度も該当ホストにssh-loginしていない場合に発生する
