@@ -4,7 +4,7 @@
 
 - name: write the apache config file
   template:
-    src:  /etc/ansible/roles/webserv/templates/httpd.conf
+    src:  ./roles/webserv/templates/httpd.conf
     dest: /etc/httpd.conf
   
 - name: start service httpd

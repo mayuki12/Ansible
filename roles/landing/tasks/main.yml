@@ -1,5 +1,21 @@
-- name: put the key file
-  template:
-    src:  /etc/ansible/roles/landing/files/key
-    dest: ./keyfile
-  
+- name: add a new user      #Linuxユーザの作成
+  user: name={{username}}
+        state=present
+
+- name: mkdir .ssh          #.sshフォルダの作成
+  file: dest=/home/{{username}}/.ssh/
+        state=directory
+        owner={{username}}
+        group={{username}}
+        mode=700
+
+- name: add authorized keys #.ssh以下にauthorized_keysファイルの作成
+  file: dest=/home/{{username}}/.ssh/authorized_keys
+        state=touch
+        owner={{username}}
+        group={{username}}
+        mode=600
+
+- name: copy publickey     #公開鍵を貼付け
+  copy: src=./roles/landing/files/{{username}}
+        dest=/home/{{username}}/.ssh/authorized_keys

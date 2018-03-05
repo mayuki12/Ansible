@@ -2,8 +2,3 @@
   remote_user: root
   roles:
     - common
-
-- hosts: webservers
-  remote_user: root
-  roles:
-    - webserv
