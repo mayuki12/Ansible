@@ -17,6 +17,10 @@ yumでインストールできる
 192.168.11.11
 ```
 
+pingを打ってみる  
+`ansible -i hosts all -m ping --private-key=<秘密鍵>`
+
+
 ymlファイルを作成する(httpdをインストールする)  
 ` /etc/ansible/test.yml`
 ```
